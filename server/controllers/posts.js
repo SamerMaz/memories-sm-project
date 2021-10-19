@@ -11,17 +11,7 @@ export const getPosts = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-// export const getPost = async (req, res) => {
-//   const { id } = req.params;
 
-//   try {
-//       const post = await PostMessage.findById(id);
-
-//       res.status(200).json(post);
-//   } catch (error) {
-//       res.status(404).json({ message: error.message });
-//   }
-// }
 
 export const createPost = async (req, res) => {
   const post = req.body;
@@ -70,14 +60,28 @@ export const deletePost = async (req, res) => {
 export const likePost = async (req, res) => {
   const { id } = req.params;
 
+  //we want to make the user like once
+
+    //the user is not authenticated
+  if(!req.userId) return res.json({ message: "Unauthenticated"});
+
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send("No post with that id");
 
   const post = await PostMessage.findById(id);
-  const updatedPost = await PostMessage.findByIdAndUpdate(
-    id,
-    { likeCount: post.likeCount + 1 },
-    { new: true }
+  
+  //want to check if the userId is already like the post or not
+  const index = post.likes.findIndex((id) => id === String(req.userId));
+
+  if(index === -1){
+    // like the post
+    post.likes.push(req.userId)
+  } else{
+    //dislike a post
+    post.likes = post.likes.filter((id)=> id !== String(req.userId))
+  }
+
+  const updatedPost = await PostMessage.findByIdAndUpdate( id, post, { new: true }
   );
 
   res.json(updatedPost);
