@@ -26,7 +26,7 @@ const Navbar = () => {
     //JWT..
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]); //when the location(of the page) changes set the user 
+  }, [location]); //when the location(of the page) changes set the user
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">

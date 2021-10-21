@@ -6,7 +6,7 @@ const auth = async (req, res, next) => {
     // checking if it is the user who is claiming to be
     const token = req.headers.authorization.split(" ")[1];
 
-    // we have 2 tokin the one from googleAuth and our own one
+    // we have 2 tokin the one from googleAuth and our custom token
     const isCustomAuth = token.length < 500;
 
     // the data that we want to get from token it self
