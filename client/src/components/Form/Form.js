@@ -20,7 +20,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
-  
+  console.log(user)
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -43,6 +43,7 @@ const Form = ({ currentId, setCurrentId }) => {
     //if the current id is not null  then we will dispatch the updated post
     if (currentId === 0) {
       dispatch(createPost({...postData, name: user?.result?.name}));
+      
       
       clear();
     } else {
