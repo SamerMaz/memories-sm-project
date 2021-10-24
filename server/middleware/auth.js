@@ -1,4 +1,4 @@
-import Jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 // auth middleware  will confirm or denies a request user want to do
 const auth = async (req, res, next) => {
