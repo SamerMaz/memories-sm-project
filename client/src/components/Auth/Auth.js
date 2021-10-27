@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom";
 import Icon from "./icon";
 import useStyles from "./styles";
 import { signin, signup } from "../../actions/auth";
+import dotenv from "dotenv";
 
 import Input from "./Input";
 const initialState = {
@@ -23,7 +24,7 @@ const initialState = {
   password: "",
   confirmPassword: "",
 };
-
+dotenv.config();
 const Auth = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
@@ -70,6 +71,7 @@ const Auth = () => {
     console.log(error);
     console.log("Google Sign In was unsuccessful. Try Again Later");
   };
+  const clientId = process.env.REACT_APP_GOOGLE_API_KEY;
 
   return (
     <Container component="main" maxWidth="xs">
@@ -131,7 +133,7 @@ const Auth = () => {
             {isSignup ? "Sign Up" : "SignIn"}
           </Button>
           <GoogleLogin
-            clientId="55552160925-gktimq0uqfn4lal7g9qrh2hno74q6a6t.apps.googleusercontent.com"
+            clientId={`${clientId}`}
             render={(renderProps) => (
               <Button
                 className={classes.googleButton}
