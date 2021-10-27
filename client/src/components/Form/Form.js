@@ -19,8 +19,7 @@ const Form = ({ currentId, setCurrentId }) => {
   );
   const classes = useStyles();
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem('profile'));
-  console.log(user)
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -42,30 +41,27 @@ const Form = ({ currentId, setCurrentId }) => {
 
     //if the current id is not null  then we will dispatch the updated post
     if (currentId === 0) {
-      dispatch(createPost({...postData, name: user?.result?.name}));
-      
-      
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
+
       clear();
     } else {
-      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+      dispatch(
+        updatePost(currentId, { ...postData, name: user?.result?.name })
+      );
       clear();
     }
   };
 
   //checking if there is no current login user
-  if(!user?.result?.name){
-    return(
+  if (!user?.result?.name) {
+    return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
           Please Sign In to create your own memories and like other's memories.
         </Typography>
-
       </Paper>
-    )
+    );
   }
-
-
-  
 
   return (
     <Paper className={classes.paper}>
@@ -76,7 +72,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing"${post.title}"` : "Creating a Memory"} 
+          {currentId ? `Editing"${post.title}"` : "Creating a Memory"}
         </Typography>
         {/* <TextField
           name="creator"

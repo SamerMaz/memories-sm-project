@@ -21,7 +21,7 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-  console.log(user)
+  
   //subcomponent
   const Likes = () => {
     if (post.likes.length > 0) {
