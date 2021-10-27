@@ -1,5 +1,5 @@
 # memories-sm-project
-<img src=".imgApp.PNG" width="500">
+<img src=".imageApp.PNG" width="500">
 
 
 ## Description
