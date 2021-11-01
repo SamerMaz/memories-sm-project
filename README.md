@@ -4,7 +4,7 @@ https://memories-sm-app.netlify.app/
 
 ## Description
 "Memories" is a simple social media app that allows users to post interesting events that happened in their lives.
-It's a full stack MERN application using React, Node.js, Express & MongoDB and Material UI for the design.
+It's a full stack MERN application using React, Redux, Node.js, Express & MongoDB and Material UI for the design.
 
 ## Installing the project
 - Open your terminal and then type. `$ git clone {the url to the GitHub repo}`  
