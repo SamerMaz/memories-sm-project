@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Avatar,
+  Button,
+  createTheme,
+  ThemeProvider,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import decode from 'jwt-decode'
+import decode from "jwt-decode";
 
 import useStyles from "./styles";
 import memories from "../../images/memories.png";
@@ -26,27 +34,39 @@ const Navbar = () => {
     const token = user?.token;
 
     //checking if token is expired
-    if(token){
+    if (token) {
       const decodedToken = decode(token);
 
-      if(decodedToken.exp * 1000 < new Date().getTime()) logOut()
+      if (decodedToken.exp * 1000 < new Date().getTime()) logOut();
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]); //when the location(of the page) changes set the user
 
+  const theme = createTheme();
+
+  theme.typography.h2 = {
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "1.5rem",
+      marginLeft: "-2rem",
+    },
+  };
+
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
-        <Typography
-          component={Link}
-          to="/"
-          className={classes.heading}
-          variant="h2"
-          align="center"
-        >
-          Memories
-        </Typography>
+        <ThemeProvider theme={theme}>
+          <Typography
+            component={Link}
+            to="/"
+            className={classes.heading}
+            variant="h2"
+            align="center"
+          >
+            Memories
+          </Typography>
+        </ThemeProvider>
+
         <img
           className={classes.image}
           src={memories}
