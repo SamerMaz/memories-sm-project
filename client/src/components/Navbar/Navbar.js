@@ -43,19 +43,11 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]); //when the location(of the page) changes set the user
 
-  const theme = createTheme();
-
-  theme.typography.h2 = {
-    [theme.breakpoints.only("xs")]: {
-      fontSize: "1.5rem",
-      marginLeft: "-2rem",
-    },
-  };
 
   return (
+    
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
-        <ThemeProvider theme={theme}>
           <Typography
             component={Link}
             to="/"
@@ -65,7 +57,6 @@ const Navbar = () => {
           >
             Memories
           </Typography>
-        </ThemeProvider>
 
         <img
           className={classes.image}
@@ -98,6 +89,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Button
+            className={classes.btnSignin}
             component={Link}
             to="/auth"
             variant="contained"
@@ -108,6 +100,7 @@ const Navbar = () => {
         )}
       </Toolbar>
     </AppBar>
+    
   );
 };
 

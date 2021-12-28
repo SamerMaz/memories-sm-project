@@ -41,4 +41,23 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  
+
+  [theme.breakpoints.down("sm")]: {
+    heading: {
+      fontSize: "1.7rem",
+      marginLeft: "-2rem",
+    },
+    image:{
+      height: "3.5rem"
+    },
+    btnSignin:{
+      padding: "4px",
+      fontSize: "17px",
+      minWidth: "100px"
+    }
+    // appBar:{
+    // TODO adjust the navbar when user is login by removing the navbar and chang the width
+    // }
+  },
 }));
