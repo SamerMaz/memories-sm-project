@@ -49,7 +49,7 @@ export default makeStyles((theme) => ({
       marginLeft: "-2rem",
     },
     image:{
-      height: "3.5rem"
+      height: "3.4rem"
     },
     btnSignin:{
       padding: "4px",
